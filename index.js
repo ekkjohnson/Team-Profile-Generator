@@ -11,3 +11,9 @@ const inquirer = require('inquirer');
 
 // team array
 const teamArray = []; 
+
+const newManager(Manager) {
+    return inquirer.prompt([
+
+    ])
+}
