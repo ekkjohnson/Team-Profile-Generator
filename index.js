@@ -1,9 +1,9 @@
 const generateHTML = require('./src/generateHTML');
 
 // team profiles
-const Manager = require('./lib/manager');
-const Engineer = require('./lib/engineer');
-const Intern = require('./lib/intern'); 
+const manager = require('./lib/manager');
+const engineer = require('./lib/engineer');
+const intern = require('./lib/intern'); 
 
 // node modules 
 const fs = require('fs'); 
@@ -12,7 +12,7 @@ const inquirer = require('inquirer');
 // team array
 const teamArray = []; 
 
-const newManager(Manager) {
+const newManager(manager) {
     return inquirer.prompt([
 
     ])
