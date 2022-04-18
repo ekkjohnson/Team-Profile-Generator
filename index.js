@@ -13,7 +13,7 @@ const Employee = require('./lib/employee');
 // team array
 const teamArray = []; 
 
-// Create function to initialize the app, divide it up based on employee roles
+// new function to initialize the app, divide it up based on employee roles
 const addManager =[
     {
         type:'input',
@@ -99,14 +99,14 @@ function init (){
         const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber)
         if(manager) {
             teamArray.push(manager)
-            createMember()
+            newMember()
         }
     })
 }
 
-function createMember (){
+function newMember (){
     inquirer
-    .prompt(createTeamMember)
+    .prompt(newTeamMember)
     .then(answers=>{
         if(answers.addNExt === 'Engineer'){
             inquirer
@@ -115,7 +115,7 @@ function createMember (){
                 {
                     const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github)
                     teamArray.push(engineer)
-                    createMember()
+                    newMember()
                 })
         } else if (answers.addNext === 'Inter'){
             inquirer
@@ -123,7 +123,7 @@ function createMember (){
             .then(answers=> {
                 const intern = new Intern(answers.name, answers.id, answers.email, answers.school)
                 teamArray.push(intern)
-                createMember()
+                newMember()
             })
         } else {
             console.log ('please run function to generate your html')
