@@ -13,11 +13,28 @@ const inquirer = require('inquirer');
 const teamArray = []; 
 
 // Create function to initialize the app, divide it up based on employee roles
-// const newManager(manager) {
-//     return inquirer.prompt([
-
-//     ])
-// }
+const addManager =[
+    {
+        type:'input',
+        name:'name',
+        message: "please enter manager's name"
+    },
+    {
+        type:'input',
+        name:'id',
+        message: "please enter manager's employee ID"
+    },
+    {
+        type:'input',
+        name:'email',
+        message: "please enter manager's email"
+    },
+    {
+        type:'input',
+        name:'officeNumber',
+        message: "please enter manager's office number"
+    }
+]
 // helper function in your src folder to generate HTML file
 function writeToFile(fileName, data) {
     fs.writeFile(fileName, generateHTML(data), (err) => {
