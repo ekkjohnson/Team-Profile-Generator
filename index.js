@@ -1,13 +1,13 @@
-const generateHTML = require('./src/generateHTML');
-
+// const generateHTML = require('./src/generateHTML');
+const fs = require('fs'); 
+const inquirer = require('inquirer');
 // team profiles
 const Manager = require('./lib/manager');
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern'); 
 
 // node modules 
-const fs = require('fs'); 
-const inquirer = require('inquirer');
+
 const Employee = require('./lib/employee');
 
 // team array
