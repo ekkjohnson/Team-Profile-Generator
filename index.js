@@ -35,6 +35,38 @@ const addManager =[
         message: "please enter manager's office number"
     }
 ]
+
+const addTeamMember= [
+    {
+        type: 'list',
+        name: 'addNextMember',
+        message: 'to add more members to of your team select from the roles below or select "Finish" to generate your team',
+        choices: ['Engineer', 'Intern', 'Finish']
+    }
+]
+
+const addEngineer = [
+    {
+        type:'input',
+        name:'name',
+        message: "please enter engineer's name"
+    },
+    {
+        type:'input',
+        name:'id',
+        message: "please enter engineer's employee ID"
+    },
+    {
+        type:'input',
+        name:'email',
+        message: "please enter engineer's email address"
+    },
+    {
+        type:'input',
+        name:'github',
+        message: "please enter the egineer's github username"
+    },
+]
 // helper function in your src folder to generate HTML file
 function writeToFile(fileName, data) {
     fs.writeFile(fileName, generateHTML(data), (err) => {
