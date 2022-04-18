@@ -96,7 +96,7 @@ function init (){
     inquirer
     .prompt(addManager)
     .then(answers =>{
-        const manager = createManager(answers.name, answers.id, answers.email, answers.officeNumber)
+        const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber)
         if(manager) {
             teamArray.push(manager)
             createMember()
@@ -113,7 +113,7 @@ function createMember (){
             .prompt(addEngineer)
             .then(answers=>
                 {
-                    const engineer = createEngineer (answers.name, answers.id, answers.email, answers.github)
+                    const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github)
                     teamArray.push(engineer)
                     createMember()
                 })
@@ -121,7 +121,7 @@ function createMember (){
             inquirer
             .prompt(addIntern)
             .then(answers=> {
-                const intern = createIntern (answers.name, answers.id, answers.email, answers.school)
+                const intern = new Intern(answers.name, answers.id, answers.email, answers.school)
                 teamArray.push(intern)
                 createMember()
             })
