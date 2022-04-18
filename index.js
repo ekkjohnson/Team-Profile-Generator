@@ -106,7 +106,7 @@ function init (){
 
 function newMember (){
     inquirer
-    .prompt(newTeamMember)
+    .prompt(addTeamMember)
     .then(answers=>{
         if(answers.addNExt === 'Engineer'){
             inquirer
