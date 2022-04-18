@@ -64,7 +64,29 @@ const addEngineer = [
     {
         type:'input',
         name:'github',
-        message: "please enter the egineer's github username"
+        message: "please enter the engineer's github username"
+    },
+]
+const addIntern=[
+    {
+        type:'input',
+        name:'name',
+        message: "please enter interns's name"
+    },
+    {
+        type:'input',
+        name:'id',
+        message: "please enter intern's employee ID"
+    },
+    {
+        type:'input',
+        name:'email',
+        message: "please enter intern's email address"
+    },
+    {
+        type:'input',
+        name:'github',
+        message: "please enter the intern's school"
     },
 ]
 // helper function in your src folder to generate HTML file
