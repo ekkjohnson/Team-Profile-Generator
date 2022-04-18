@@ -8,6 +8,7 @@ const intern = require('./lib/intern');
 // node modules 
 const fs = require('fs'); 
 const inquirer = require('inquirer');
+const employee = require('./lib/employee');
 
 // team array
 const teamArray = []; 
@@ -89,43 +90,18 @@ const addIntern=[
         message: "please enter the intern's school"
     },
 ]
-// helper function in your src folder to generate HTML file
-function writeToFile(fileName, data) {
-    fs.writeFile(fileName, generateHTML(data), (err) => {
-        if (err) {
-            console.log('error');
-        } else {
-
-        }
-    })
-}
 
 // TODO: Create a function to initialize app
-function init() {
+function init (){
     inquirer
-        .prompt(questions)
-        .then((answers) => {
-            writeToFile('html.index', answers)
-        })
-}
-
-function writeToFile(fileName, data) {
-    fs.writeFile(fileName, generateHTML(data), (err) => {
-        if (err) {
-            console.log('error');
-        } else {
-
+    .prompt(addManager)
+    .then(answers =>{
+        const manager = createManager(answers.name, answers.id, answers.email, answers.officeNumber)
+        if(manager) {
+            teamArray.push(manager)
+            newMember()
         }
     })
-}
-
-// TODO: Create a function to initialize app
-function init() {
-    inquirer
-        .prompt(questions)
-        .then((answers) => {
-            writeToFile('html.index', answers)
-        })
 }
 
 // Function call to initialize app
