@@ -1,14 +1,14 @@
 const generateHTML = require('./src/generateHTML');
 
 // team profiles
-const manager = require('./lib/manager');
-const engineer = require('./lib/engineer');
-const intern = require('./lib/intern'); 
+const Manager = require('./lib/manager');
+const Engineer = require('./lib/engineer');
+const Intern = require('./lib/intern'); 
 
 // node modules 
 const fs = require('fs'); 
 const inquirer = require('inquirer');
-const employee = require('./lib/employee');
+const Employee = require('./lib/employee');
 
 // team array
 const teamArray = []; 
@@ -99,7 +99,35 @@ function init (){
         const manager = createManager(answers.name, answers.id, answers.email, answers.officeNumber)
         if(manager) {
             teamArray.push(manager)
-            newMember()
+            createMember()
+        }
+    })
+}
+
+function createMember (){
+    inquirer
+    .prompt(createTeamMember)
+    .then(answers=>{
+        if(answers.addNExt === 'Engineer'){
+            inquirer
+            .prompt(addEngineer)
+            .then(answers=>
+                {
+                    const engineer = createEngineer (answers.name, answers.id, answers.email, answers.github)
+                    teamArray.push(engineer)
+                    createMember()
+                })
+        } else if (answers.addNext === 'Inter'){
+            inquirer
+            .prompt(addIntern)
+            .then(answers=> {
+                const intern = createIntern (answers.name, answers.id, answers.email, answers.school)
+                teamArray.push(intern)
+                createMember()
+            })
+        } else {
+            console.log ('please run function to generate your html')
+            console.log(teamArray)
         }
     })
 }
