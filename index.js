@@ -38,7 +38,8 @@ inquirer.prompt([
 })
 
 // new function to initialize the app, divide it up based on employee roles
-const addManager =[
+function addManager () {
+    inquirer.prompt([
     {
         type:'input',
         name:'name',
@@ -59,7 +60,12 @@ const addManager =[
         name:'officeNumber',
         message: "please enter manager's office number"
     }
-]
+]).then(data =>{
+    const ManagerInstance = new Manager (data.ManagerName, data.ManagerID, data.ManagerEmail, data.officeNumber)
+    teamMemberArray.push(ManagerInstance)
+    renderCards()
+})
+}
 
 const addTeamMember= [
     {
