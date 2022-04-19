@@ -10,13 +10,5 @@ describe('Intern', () =>{
       expect(liz.school).toBe('UM');
   });
 
-  it('should get the name, email, id, and role using methods', () => {
-      const ella = new Intern('ella', 33, 'ella@gmail.com', 'UM');
 
-      expect(ella.getName()).toBe('ella');
-      expect(ella.getId()).toBe(33);
-      expect(ella.getEmail()).toBe('ella@gmail.com');
-      expect(ella.getSchool()).toBe('UM');
-      expect(ella.getRole()).toBe('Intern');
-  });
 });

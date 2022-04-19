@@ -9,12 +9,5 @@ describe('Employee', () =>{
       expect(liz.email).toBe('liz@gmail.com');
   });
 
-  it('should get the name, email, id, and role using methods', () => {
-      const ella = new Employee('ella', 33, 'ella@gmail.com');
-
-      expect(ella.getName()).toBe('ella');
-      expect(ella.getId()).toBe(33);
-      expect(ella.getEmail()).toBe('ella@gmail.com');
-      expect(ella.getRole()).toBe('Employee');
-  });
+  
 });

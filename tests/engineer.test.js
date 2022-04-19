@@ -10,13 +10,5 @@ describe('Engineer', () =>{
       expect(liz.github).toBe('liz99')
   });
 
-  it('should get the name, email, id, and role using methods', () => {
-      const ella = new Engineer('ella', 33, 'ella@gmail.com', 'ella98');
 
-      expect(ella.getName()).toBe('ella');
-      expect(ella.getId()).toBe(33);
-      expect(ella.getEmail()).toBe('ella@gmail.com');
-      expect(ella.getGitHub()).toBe('ella98')
-      expect(ella.getRole()).toBe('Engineer');
-  });
 });
