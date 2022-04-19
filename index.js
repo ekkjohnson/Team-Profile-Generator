@@ -1,6 +1,9 @@
-const generateHTML = require('./assets/src/index.html');
+const generateHTML = require('./assets/src/generateHTML');
 const fs = require('fs'); 
+const Path = require ('path')
 const inquirer = require('inquirer');
+const pathToDist = Path.resolve(__dirname, "dist")
+const fileToDist = Path.join(pathToDist, 'index.html')
 // team profiles
 const Manager = require('./lib/manager');
 const Engineer = require('./lib/engineer');
@@ -90,49 +93,52 @@ const addIntern=[
         message: "please enter the intern's school"
     },
 ]
-
+function renderCards (){
+    Fs.writeFileSync(fileToDist, generateHTML(teamArray), "utf-8")
+}
 
 // TODO: Create a function to initialize app
-function init (){
-    inquirer
-    .prompt(addManager)
-    .then(answers =>{
-        const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber)
-        if(manager) {
-            teamArray.push(manager)
-            newMember()
-        }
-    })
-}
+// function init (){
+//     inquirer
+//     .prompt(addManager)
+//     .then(answers =>{
+//         const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber)
+//         if(manager) {
+//             teamArray.push(manager)
+//             newMember()
+//         }
+//     })
+// }
 
-function newMember (){
-    inquirer
-    .prompt(addTeamMember)
-    .then(answers=>{
-        if(answers.addNExt === 'Engineer'){
-            inquirer
-            .prompt(addEngineer)
-            .then(answers=>
-                {
-                    const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github)
-                    teamArray.push(engineer)
-                    newMember()
-                })
-        } else if (answers.addNext === 'Inter'){
-            inquirer
-            .prompt(addIntern)
-            .then(answers=> {
-                const intern = new Intern(answers.name, answers.id, answers.email, answers.school)
-                teamArray.push(intern)
-                newMember()
-            })
-        } else {
-            console.log ('please run function to generate your html')
-            console.log(teamArray)
-        }
-    })
-}
 
-// Function call to initialize app
-init();
+// function newMember (){
+//     inquirer
+//     .prompt(addTeamMember)
+//     .then(answers=>{
+//         if(answers.addNExt === 'Engineer'){
+//             inquirer
+//             .prompt(addEngineer)
+//             .then(answers=>
+//                 {
+//                     const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github)
+//                     teamArray.push(engineer)
+//                     newMember()
+//                 })
+//         } else if (answers.addNext === 'Inter'){
+//             inquirer
+//             .prompt(addIntern)
+//             .then(answers=> {
+//                 const intern = new Intern(answers.name, answers.id, answers.email, answers.school)
+//                 teamArray.push(intern)
+//                 newMember()
+//             })
+//         } else {
+//             console.log ('please run function to generate your html')
+//             console.log(teamArray)
+//         }
+//     })
+// }
+
+// // Function call to initialize app
+// init();
 
