@@ -1,4 +1,4 @@
-const Employee = require('../lib/employee');
+const Employee = require('./employee');
 describe('Employee', () =>{
 
   it('Should have name, id, and email attributes after instantiation.', () => {

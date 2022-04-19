@@ -2,16 +2,16 @@ const Engineer = require('../lib/engineer');
 describe('Engineer', () =>{
 
   it('Should have name, id, and email attributes and github after instantiation.', () => {
-      const liz = new Engineer('liz', 10, 'liz@gmail.com');
+      const liz = new Engineer('liz', 10, 'liz@gmail.com', 'liz99');
 
       expect(liz.name).toBe('liz');
       expect(liz.id).toBe(10);
       expect(liz.email).toBe('liz@gmail.com');
-      expect(liz.github).toBe(liz99);
+      expect(liz.github).toBe('liz99');
   });
 
   it('should get the name, email, id, and role using methods', () => {
-      const ella = new Engineer('ella', 33, 'ella@gmail.com');
+      const ella = new Engineer('ella', 33, 'ella@gmail.com', 'ella98');
 
       expect(ella.getName()).toBe('ella');
       expect(ella.getId()).toBe(33);

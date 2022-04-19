@@ -2,7 +2,7 @@ const Manager = require('../lib/manager');
 describe('Manager', () =>{
 
   it('Should have name, id, and email attributes and office number after instantiation.', () => {
-      const liz = new Manager('liz', 10, 'liz@gmail.com');
+      const liz = new Manager('liz', 10, 'liz@gmail.com', 6);
 
       expect(liz.name).toBe('liz');
       expect(liz.id).toBe(10);
@@ -11,7 +11,7 @@ describe('Manager', () =>{
   });
 
   it('should get the name, email, id, and role using methods', () => {
-      const ella = new Manager('ella', 33, 'ella@gmail.com');
+      const ella = new Manager('ella', 33, 'ella@gmail.com', 7);
 
       expect(ella.getName()).toBe('ella');
       expect(ella.getId()).toBe(33);

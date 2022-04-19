@@ -2,7 +2,7 @@ const Intern = require('../lib/intern');
 describe('Intern', () =>{
 
   it('Should have name, id, and email and school attributes after instantiation.', () => {
-      const liz = new Intern('liz', 10, 'liz@gmail.com, UM');
+      const liz = new Intern('liz', 10, 'liz@gmail.com', 'UM');
 
       expect(liz.name).toBe('liz');
       expect(liz.id).toBe(10);
@@ -11,7 +11,7 @@ describe('Intern', () =>{
   });
 
   it('should get the name, email, id, and role using methods', () => {
-      const ella = new Intern('ella', 33, 'ella@gmail.com');
+      const ella = new Intern('ella', 33, 'ella@gmail.com', 'UM');
 
       expect(ella.getName()).toBe('ella');
       expect(ella.getId()).toBe(33);
