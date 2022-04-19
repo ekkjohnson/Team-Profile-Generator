@@ -1,3 +1,4 @@
+//to generate team cards
 function generateTeamCards(teamArray){
     function generateIntern (employee){
         return `<div class="card employee-card">
@@ -66,7 +67,7 @@ function generateTeamCards(teamArray){
 }
 
 
-
+//exports teamArray data
 module.exports = teamArray => {
     return `
     <!DOCTYPE html>

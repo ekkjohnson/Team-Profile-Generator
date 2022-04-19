@@ -37,7 +37,7 @@ inquirer.prompt([
     }
 })
 
-// new function to initialize the app, divide it up based on employee roles
+// prompts and functions to push data into teamArray to render cards
 function addManager () {
     inquirer.prompt([
     {
@@ -124,55 +124,7 @@ function addIntern () {
     renderCards()
 })
 }
-
+//function to use data pushed into teamArray that renders the cards
 function renderCards (){
     Fs.writeFileSync(fileToDist, generateHTML(teamArray), "utf-8")
 }
-
-// TODO: Create a function to initialize app
-// function init (){
-//     inquirer
-//     .prompt(addManager)
-//     .then(answers =>{
-//         const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber)
-//         if(manager) {
-//             teamArray.push(manager)
-//             newMember()
-//         }
-//     })
-// }
-
-
-// function newMember (){
-//     inquirer
-//     .prompt(addteam)
-//     .then(answers=>{
-//         if(answers.addNExt === 'Engineer'){
-//             inquirer
-//             .prompt(addEngineer)
-//             .then(answers=>
-//                 {
-//                     const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github)
-//                     teamArray.push(engineer)
-//                     newMember()
-//                 })
-//         } else if (answers.addNext === 'Inter'){
-//             inquirer
-//             .prompt(addIntern)
-//             .then(answers=> {
-//                 const intern = new Intern(answers.name, answers.id, answers.email, answers.school)
-//                 teamArray.push(intern)
-//                 newMember()
-//             })
-//         } else {
-//             console.log ('please run function to generate your html')
-//             console.log(teamArray)
-//         }
-//     })
-// }
-
-// // Function call to initialize app
-// init();
-
-
-
