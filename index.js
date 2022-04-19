@@ -1,5 +1,5 @@
 const generateHTML = require('./assets/src/generateHTML');
-const fs = require('fs'); 
+const Fs = require('fs'); 
 const Path = require ('path')
 const inquirer = require('inquirer');
 const pathToDist = Path.resolve(__dirname, "dist")
@@ -125,7 +125,7 @@ function addIntern () {
 })
 }
 
-function renderCards (fileToDist, data){
+function renderCards (){
     Fs.writeFileSync(fileToDist, generateHTML(teamArray), "utf-8")
 }
 
