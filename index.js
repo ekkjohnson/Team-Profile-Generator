@@ -16,6 +16,27 @@ const Employee = require('./lib/employee');
 // team array
 const teamArray = []; 
 
+inquirer.prompt([
+    {type:"list",
+     name: "AddEmployee",
+     message: "What kind of employee would you like to add?",
+     choices: ["Manager", "Intern", "Engineer"]
+    },
+]) .then ((answers)=>{
+    switch (answers.AddEmployee){
+        case 'Manager':
+            addManager();
+            break;
+        case 'Intern':
+            addIntern();
+            break;
+        case 'Engineer':
+            addEngineer();
+            break;
+        
+    }
+})
+
 // new function to initialize the app, divide it up based on employee roles
 const addManager =[
     {
@@ -93,52 +114,55 @@ const addIntern=[
         message: "please enter the intern's school"
     },
 ]
-function renderCards (){
+
+function renderCards (fileToDist, data){
     Fs.writeFileSync(fileToDist, generateHTML(teamArray), "utf-8")
 }
 
 // TODO: Create a function to initialize app
-// function init (){
-//     inquirer
-//     .prompt(addManager)
-//     .then(answers =>{
-//         const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber)
-//         if(manager) {
-//             teamArray.push(manager)
-//             newMember()
-//         }
-//     })
-// }
+function init (){
+    inquirer
+    .prompt(addManager)
+    .then(answers =>{
+        const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber)
+        if(manager) {
+            teamArray.push(manager)
+            newMember()
+        }
+    })
+}
 
 
-// function newMember (){
-//     inquirer
-//     .prompt(addTeamMember)
-//     .then(answers=>{
-//         if(answers.addNExt === 'Engineer'){
-//             inquirer
-//             .prompt(addEngineer)
-//             .then(answers=>
-//                 {
-//                     const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github)
-//                     teamArray.push(engineer)
-//                     newMember()
-//                 })
-//         } else if (answers.addNext === 'Inter'){
-//             inquirer
-//             .prompt(addIntern)
-//             .then(answers=> {
-//                 const intern = new Intern(answers.name, answers.id, answers.email, answers.school)
-//                 teamArray.push(intern)
-//                 newMember()
-//             })
-//         } else {
-//             console.log ('please run function to generate your html')
-//             console.log(teamArray)
-//         }
-//     })
-// }
+function newMember (){
+    inquirer
+    .prompt(addTeamMember)
+    .then(answers=>{
+        if(answers.addNExt === 'Engineer'){
+            inquirer
+            .prompt(addEngineer)
+            .then(answers=>
+                {
+                    const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github)
+                    teamArray.push(engineer)
+                    newMember()
+                })
+        } else if (answers.addNext === 'Inter'){
+            inquirer
+            .prompt(addIntern)
+            .then(answers=> {
+                const intern = new Intern(answers.name, answers.id, answers.email, answers.school)
+                teamArray.push(intern)
+                newMember()
+            })
+        } else {
+            console.log ('please run function to generate your html')
+            console.log(teamArray)
+        }
+    })
+}
 
-// // Function call to initialize app
-// init();
+// Function call to initialize app
+init();
+
+
 
