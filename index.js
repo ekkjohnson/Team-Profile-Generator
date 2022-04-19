@@ -62,7 +62,7 @@ function addManager () {
     }
 ]).then(data =>{
     const ManagerInstance = new Manager (data.ManagerName, data.ManagerID, data.ManagerEmail, data.officeNumber)
-    teamMemberArray.push(ManagerInstance)
+    teamArray.push(ManagerInstance)
     renderCards()
 })
 }
@@ -92,7 +92,7 @@ function addEngineer () {
     },
 ]).then(data =>{
     const EngineerInstance = new Engineer (data.EngineerName, data.EngineerID, data.EngineerEmail, data.GitHub)
-    teamMemberArray.push(EngineerInstance)
+    teamArray.push(EngineerInstance)
     renderCards()
 })
 }
@@ -120,7 +120,7 @@ function addIntern () {
     },
 ]).then(data =>{
     const InternInstance = new Intern (data.InternName, data.InternID, data.InternEmail, data.SchoolName)
-    teamMemberArray.push(InternInstance)
+    teamArray.push(InternInstance)
     renderCards()
 })
 }
@@ -145,7 +145,7 @@ function renderCards (fileToDist, data){
 
 // function newMember (){
 //     inquirer
-//     .prompt(addTeamMember)
+//     .prompt(addteam)
 //     .then(answers=>{
 //         if(answers.addNExt === 'Engineer'){
 //             inquirer
