@@ -1,4 +1,4 @@
-const Intern = require('../libintern');
+const Intern = require('../lib/intern');
 describe('Intern', () =>{
 
   it('Should have name, id, and email attributes after instantiation.', () => {
