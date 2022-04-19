@@ -1,4 +1,4 @@
-// const generateHTML = require('./src/generateHTML');
+const generateHTML = require('./assets/src/index.html');
 const fs = require('fs'); 
 const inquirer = require('inquirer');
 // team profiles
@@ -91,6 +91,101 @@ const addIntern=[
     },
 ]
 
+const populate = (data) => {
+    var cardContainer = [];
+    
+    for (var i = 0; i < data.length; i++) {
+        console.log(data[i])
+        if(data[i].role === "Manager") {
+            var card = `
+            <div class="card1" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">${data[i].name}</h5>
+              <h5>${data[i].role}</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">An item</li>
+              <li class="list-group-item">A second item</li>
+              <li class="list-group-item">A third item</li>
+            </ul>
+            </div>
+            `
+            cardContainer.push(card)
+        }else if(data[i].role === "Engineer") {
+            var card = `
+            <div class="card1" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">${data[i].name}</h5>
+              <h5>${data[i].role}</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">An item</li>
+              <li class="list-group-item">A second item</li>
+              <li class="list-group-item">A third item</li>
+            </ul>
+            </div>
+            `
+            cardContainer.push(card)
+        }else{
+            var card = `
+            <div class="card1" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">${data[i].name}</h5>
+              <h5>${data[i].role}</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">An item</li>
+              <li class="list-group-item">A second item</li>
+              <li class="list-group-item">A third item</li>
+            </ul>
+            </div>
+            `
+            cardContainer.push(card)
+        }
+        
+        
+}
+return cardContainer;
+}
+
+const generateHtml = (data) => {
+    return `
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link rel="stylesheet" href="./Assets/css/style.css">
+        <title>Team Profile Generator</title>
+    </head>
+    <body>
+    <nav class="navbar navbar-light bg-primary">
+    <div class="container-fluid">
+      <span class="navbar-brand mb-0 mx-auto fs-1">My Team</span>
+    </div>
+    </nav>
+    <div class="container">
+        ${populate(data)}
+    </div>
+    </body>
+    </html>
+    `
+}
+
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, generateHTML(data),(err) => {
+        if (err) {
+            console.log('error');
+        } else {
+
+        }
+    })
+}
 // TODO: Create a function to initialize app
 function init (){
     inquirer
@@ -135,27 +230,3 @@ function newMember (){
 // Function call to initialize app
 init();
 
-const writeFile = data => {
-    fs.writeFile('./dist/index.html', data, err => {
-        // if there is an error 
-        if (err) {
-            console.log(err);
-            return;
-        // when the profile has been created 
-        } else {
-            console.log("Your team profile has been successfully created! Please check out the index.html")
-        }
-    })
-}; 
-
-addManager()
-  .then(addEmployee)
-  .then(teamArray => {
-    return generateHTML(teamArray);
-  })
-  .then(pageHTML => {
-    return writeFile(pageHTML);
-  })
-  .catch(err => {
- console.log(err);
-  });
