@@ -16,11 +16,12 @@ const Employee = require('./lib/employee');
 // team array
 const teamArray = []; 
 
+function employeeOptions(){
 inquirer.prompt([
     {type:"list",
      name: "AddEmployee",
      message: "What kind of employee would you like to add?",
-     choices: ["Manager", "Intern", "Engineer"]
+     choices: ["Manager", "Intern", "Engineer", "Render Cards"]
     },
 ]) .then ((answers)=>{
     switch (answers.AddEmployee){
@@ -33,10 +34,12 @@ inquirer.prompt([
         case 'Engineer':
             addEngineer();
             break;
-        
+        case 'Render Cards':
+            renderCards()
+            break;
     }
 })
-
+}
 // prompts and functions to push data into teamArray to render cards
 function addManager () {
     inquirer.prompt([
@@ -61,9 +64,9 @@ function addManager () {
         message: "please enter manager's office number"
     }
 ]).then(data =>{
-    const ManagerInstance = new Manager (data.ManagerName, data.ManagerID, data.ManagerEmail, data.officeNumber)
+    const ManagerInstance = new Manager (data.name, data.id, data.email, data.officeNumber)
     teamArray.push(ManagerInstance)
-    renderCards()
+    employeeOptions()
 })
 }
 
@@ -91,9 +94,9 @@ function addEngineer () {
         message: "please enter the engineer's github username"
     },
 ]).then(data =>{
-    const EngineerInstance = new Engineer (data.EngineerName, data.EngineerID, data.EngineerEmail, data.GitHub)
+    const EngineerInstance = new Engineer (data.name, data.id, data.email, data.github)
     teamArray.push(EngineerInstance)
-    renderCards()
+    employeeOptions()
 })
 }
 function addIntern () {
@@ -115,16 +118,19 @@ function addIntern () {
     },
     {
         type:'input',
-        name:'github',
+        name:'school',
         message: "please enter the intern's school"
     },
 ]).then(data =>{
-    const InternInstance = new Intern (data.InternName, data.InternID, data.InternEmail, data.SchoolName)
+    const InternInstance = new Intern (data.name, data.id, data.email, data.school)
     teamArray.push(InternInstance)
-    renderCards()
+    // renderCards()
+    employeeOptions()
 })
+
 }
 //function to use data pushed into teamArray that renders the cards
 function renderCards (){
     Fs.writeFileSync(fileToDist, generateHTML(teamArray), "utf-8")
 }
+employeeOptions()

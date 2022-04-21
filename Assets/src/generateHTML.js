@@ -27,7 +27,7 @@ function generateTeamCards(teamArray){
             <ul class="list-group">
                 <li class="list-group-item">ID: ${employee.getId()}</li>
                 <li class="list-group-item">Email: <a href="mailto:${employee.getEmail()}">${employee.getEmail()}</a></li>
-                <li class="list-group-item">Github: ${employee.getGitHub()}</li>
+                <li class="list-group-item">Github: ${employee.getGithub()}</li>
             </ul>
         </div>
     </div>`
